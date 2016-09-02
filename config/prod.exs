@@ -14,15 +14,15 @@ use Mix.Config
 
 config :peepchat, Peepchat.Endpoint,
   http: [port: {:system, "PORT"}],
+  url: [scheme: "https", host: "rocky-forest-82294.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  url: [host: "rocky-forest-82294.herokuapp.com", port: 443],
-  secret_key_base: System.get_env("j2PJxyCwcIExl8Fc5xG/41UTva7olBgUvwddLr5rGU4ap/PTFdPsttyrtLQN3mVc")
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :peepchat, Peepchat.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("postgres://vhekeopedhwdix:kh2pFtGI7UbEWUKkuNjJShXyi4@ec2-54-225-89-110.compute-1.amazonaws.com:5432/d1ph1f76r7utq3"),
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
-
+  ssl: true
 # Do not print debug messages in production
 config :logger, level: :info
 
@@ -69,4 +69,3 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
