@@ -1,3 +1,4 @@
+
 defmodule Peepchat.UserController do
   use Peepchat.Web, :controller
 

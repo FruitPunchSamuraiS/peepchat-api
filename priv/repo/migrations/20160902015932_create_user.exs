@@ -6,11 +6,9 @@ defmodule Peepchat.Repo.Migrations.CreateUser do
       add :email, :string
       add :password_hash, :string
 
-      timestamps()
+      timestamps
     end
-    
-      # Unique email address constraint, via DB index
-    create index(:users, [:email], unique: true)
 
+    create index(:users, [:email], unique: true)
   end
 end
